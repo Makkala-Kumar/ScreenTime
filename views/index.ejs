@@ -1,0 +1,113 @@
+<!-- Start of Main Display of HomePage -->
+<div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
+    <div class="col-12 col-lg-6">
+        <img src="/img/LogoPoster/poster6.jpg" width="670" height="510" class="d-block mx-lg-auto img-fluid" loading="lazy"
+            alt="ScreenTime">
+    </div>
+
+    <div class="col-12 col-lg-6">
+        <h1 class="display-5 fw-bold mb-3">Your Movie Universe</h1>
+        <p class="lead">
+            Where cinematic wonders await! Immerse yourself in a galaxy of films, from timeless classics to cutting-edge blockbusters. Explore curated categories and build your personalized watchlist. Unleash the magic of movies in Your Movie Universe today!
+        </p>
+
+        <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Latest</a>
+            <a href="" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Random</a>
+        </div> -->
+    </div>
+
+</div>
+<!-- End of Main Display of HomePage -->
+
+
+<!--Marvel movies Start-->
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+        <h2>Marvel Movies</h2>
+        <a href="/movies?action=marvel" target="_blank" class="ms-auto">View More</a>
+    </div>
+
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+        <% if(allMovies !='') {%>
+            <% allMovies.marvel.forEach(function(movies, index){ %>
+        <a href="/movies/<%= movies._id %>" target="_blank" class="col text-center category__link">
+            <div class="category__img shadow">
+                <img src="./img/marvel/<%= movies.image %>" alt="<%= movies.name %>" loading="lazy">
+            </div>  
+            <h4 class="pt-1"><%= movies.name %></h4>
+        </a>
+        <% }) %>
+        <% } %>
+    </div>
+</section>
+<!--Marvel movies End-->
+
+
+<!--Action movies Start-->
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+        <h2>Action Movies </h2>
+        <a href="/movies?action=action" target="_blank" class="ms-auto">View More</a>
+    </div>
+
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+        <% if(allMovies !='') {%>
+            <% allMovies.action.forEach(function(movies, index){ %>
+        <a href="/movies/<%= movies._id %>" target="_blank" class="col text-center category__link">
+            <div class="category__img shadow">
+                <img src="./img/actionMovies/<%= movies.image %>" alt="<%= movies.name %>" loading="lazy">
+            </div>
+            <h4 class="pt-1"><%= movies.name %></h4>
+        </a>
+        <% }) %>
+        <% } %>
+    </div>
+</section>
+<!--Action movies End-->
+
+
+<!--top movies Start-->
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+        <h2>TopRated Movies </h2>
+        <a href="/movies?action=topMovies" target="_blank" class="ms-auto">View More</a>
+    </div>
+    
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+        <% if(allMovies !='') {%>
+            <% allMovies.topMovies.forEach(function(movies, index){ %>
+        <a href="/movies/<%= movies._id %>" target="_blank" class="col text-center category__link">
+            <div class="category__img shadow">
+                <img src="./img/topRatedMovies/<%= movies.image %>" alt="<%= movies.name %>" loading="lazy">
+            </div>
+            <h4 class="pt-1"><%= movies.name %></h4>
+        </a>
+        <% }) %>
+        <% } %>
+    </div>
+</section>
+<!--top movies End-->
+
+
+<!--telugu movies Start-->
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+        <h2>Telugu Movies </h2>
+        <a href="/movies?action=telugu" target="_blank" class="ms-auto">View More</a>
+    </div>
+    
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+        <% if(allMovies !='') {%>
+            <% allMovies.telugu.forEach(function(movies, index){ %>
+        <a href="/movies/<%= movies._id %>" target="_blank" class="col text-center category__link">
+            <div class="category__img shadow">
+                <img src="./img/telugu/<%= movies.image %>" alt="<%= movies.name %>" loading="lazy">
+            </div>
+            <h4 class="pt-1"><%= movies.name %></h4>
+        </a>
+        <% }) %>
+        <% } %>
+    </div>
+</section>
+<!--telugu movies End-->

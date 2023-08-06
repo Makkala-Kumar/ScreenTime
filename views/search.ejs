@@ -1,0 +1,15 @@
+<h1 class="pb-4">Search Results</h1>
+
+
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+        <% if(movies !='') {%>
+            <% movies.forEach(function(movies, index){ %>
+        <a href="/movies/<%= movies._id %>" target="_blank" class="col text-center category__link">
+            <div class="category__img shadow">
+                <img src="./img/allMovies/<%= movies.image %>" alt="<%= movies.name %>" loading="lazy">
+            </div>  
+            <h4 class="pt-1"><%= movies.name %></h4>
+        </a>
+        <% }) %>
+        <% } %>
+    </div>

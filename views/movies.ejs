@@ -1,0 +1,120 @@
+<%# This the code for a single movie display when we select it %>
+
+    <% if(movies !=null) { %>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><%- movies.name %></li>
+            </ol>
+        </nav>
+
+
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <img src="../img/allMovies/<%= movies.image %>" class="img-fluid sticky-top" style="top: 20px;"
+                    alt="<%- movies.name %>" loading="lazy">
+            </div>
+
+            <div class="col-12 col-md-8">
+                <div class="row">
+                    <div class="col-12">
+                        <h1><%- movies.name %></h1>
+                    </div>
+                    <div class="col-12 mb-4"><i class="bi bi-tag"></i> <%- movies.category %></div>
+                    <div class="col-12" style="white-space: pre-line;">
+                        <h4>Synopsis: </h4><%- movies.description %>
+                    </div>
+                </div>
+
+                <div class="row pt-4">
+                    <div class="col-12">
+                        <h5>Release Date and Duration</h5>
+                        <ul class="list-group list-group-flush">
+                            <% movies.release.forEach(function(release,index) {%>
+                                <ul class="list-group-item">
+                                    <%= release %>
+                                </ul>
+                                <% }) %>
+                        </ul><br>
+                        <h2>Rating: <i class="rating-container"><%- movies.rating %> <span
+                                        class="fa fa-star"></span></i></h2>
+                    </div>
+                </div>
+                <div class="col-12 col-md-8">
+                    <div class="row"> <!-- New row for the div bars -->
+                        <div class="col-12 col-md-8">
+                            <a href="<%- movies.imdb %>" target="_blank">
+                                <img src="../img/LogoPoster/imdb.png" height="50">
+                            </a>
+                            <br><br>
+                            <a href="<%- movies.ott %>" target="_blank">
+                                <p>Click Here to Watch on any of the OTT Platforms</p>
+                            </a>
+                            <img class="ott" src="../img/LogoPoster/hotstar.webp">
+                            <img class="ott" src="../img/LogoPoster/prime.png">
+                            <img class="ott" src="../img/LogoPoster/Netflix.png">
+                            <img class="ott" src="../img/LogoPoster/Zee5.jpeg">
+
+                        </div>
+                        <div class="col-12 col-md-4"> <!-- New div bar for the option form -->
+
+
+                            <!-- Form to add movie to favorites -->
+                            <form action="/profile/favorites/<%= movies._id %>" method="POST">
+                                <button type="submit" class="btn btn-primary">Add to Favorites</button>
+                              </form><br>
+                              
+                              <form action="/profile/watchlist/<%= movies._id %>" method="POST">
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Add To List:</label>
+                                    <select class="form-select" id="status" name="status">
+                                        <option value="" selected disabled>Select status</option>
+                                        <option value="Watching">Watching</option>
+                                        <option value="Plan to Watch">Plan to Watch</option>
+                                        <option value="Completed">Completed</option>
+                                        <option value="Dropped">Dropped</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="rating" class="form-label">Rating:</label>
+                                    <select class="form-select" id="rating" name="rating">
+                                        <option selected disabled>Select rating from 1 to 10</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Add to list</button>
+                            </form>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <% }else {%>
+                    <p>No item found.</p>
+                    <% } %>
+
+                        <!-- <style>
+                    .rating-container {
+                        font-size: 44px;
+                        color: #715cf8;
+                    }
+
+                    .ott {
+                        height: 50px;
+                        margin-right: 10px;
+                        text-decoration: none;
+                    }
+                </style> -->

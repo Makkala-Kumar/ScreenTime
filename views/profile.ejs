@@ -1,0 +1,90 @@
+<!-- User Information Section -->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>User Information</h2>
+      <p><strong>Username:</strong>
+        <%= user.username %>
+      </p>
+      <p><strong>Email:</strong>
+        <%= user.email %>
+      </p>
+      <!-- Add more user information fields as needed -->
+    </div>
+  </div>
+</div>
+
+<!-- Watchlist and Favorites Sections (Side by Side) -->
+<div class="container mt-4">
+  <div class="row">
+    <!-- Watchlist Section -->
+    <div class="col-md-6">
+      <h2>Watchlist</h2>
+      <% if (user.watchlist.length> 0) { %>
+        <ul class="list-group mt-3">
+          <% user.watchlist.forEach(item=> { %>
+            <li class="list-group-item">
+              <% if (item.movie && item.movie.name && item.movie.image) { %>
+                <div class="row">
+                  <div class="col-md-2">
+                    <a href="/movies/<%= item.movie._id %>">
+                      <img src="./img/allMovies/<%= item.movie.image %>" alt="<%= item.movie.name %>" class="img-fluid"
+                        style="max-width: 100px; height: 150px;">
+                    </a>
+                  </div>
+                  <div class="col-md-10">
+                    <h3><a href="/movies/<%= item.movie._id %>">
+                        <%= item.movie.name %>
+                      </a></h3>
+                    <p>Status: <%= item.status %>
+                    </p>
+                    <p>User Rating: <%= item.userRating %>
+                    </p>
+                  </div>
+                </div>
+                <% } else { %>
+                  <p>Movie details not available</p>
+                  <% } %>
+            </li>
+            <% }) %>
+        </ul>
+        <% } else { %>
+          <p class="mt-3">No movies in the watchlist.</p>
+          <% } %>
+    </div>
+
+    <div class="col-md-6">
+      <h2>Favorites</h2>
+      <% if (user.favorites && user.favorites.length > 0) { %>
+        <ul class="list-group mt-3">
+          <% user.favorites.forEach(item => { %>
+            <li class="list-group-item">
+              <% if (item.movie && item.movie.name && item.movie.image) { %>
+                <div class="row">
+                  <div class="col-md-2">
+                    <a href="/movies/<%= item.movie._id %>">
+                      <img src="./img/allMovies/<%= item.movie.image %>" alt="<%= item.movie.name %>"
+                        class="img-fluid" style="max-width: 100px; height: 150px;">
+                    </a>
+                  </div>
+                  <div class="col-md-10">
+                    <h3><a href="/movies/<%= item.movie._id %>">
+                        <%= item.movie.name %>
+                      </a></h3>
+                    <p>Status: <%= item.status %></p>
+                    <p>User Rating: <%= item.userRating %></p>
+                  </div>
+                </div>
+              <% } else { %>
+                <p>Movie details not available</p>
+              <% } %>
+            </li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <p class="mt-3">No favorites added yet.</p>
+      <% } %>
+
+    </div>
+  </div>
+</div>

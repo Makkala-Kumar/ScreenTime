@@ -1,0 +1,67 @@
+<% if (category === 'action') { %>
+    <h1>All Action Movies</h1>
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+        <% if(allMovies.action.length > 0) { %>
+            <% allMovies.action.forEach(function(movie) { %>
+                <a href="/movies/<%= movie._id %>" target="_blank" class="col text-center category__link">
+                    <div class="category__img shadow">
+                        <img src="./img/actionMovies/<%= movie.image %>" alt="<%= movie.name %>" loading="lazy">
+                    </div>
+                    <h4 class="pt-1"><%= movie.name %></h4>
+                </a>
+            <% }) %>
+        <% } else { %>
+            <p>No action movies found.</p>
+        <% } %>
+    </div>
+<% } else if (category === 'marvel') { %>
+    <h1>All Marvel Movies</h1>
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+        <% if(allMovies.marvel.length > 0) { %>
+            <% allMovies.marvel.forEach(function(movie) { %>
+                <a href="/movies/<%= movie._id %>" target="_blank" class="col text-center category__link">
+                    <div class="category__img shadow">
+                        <img src="./img/marvel/<%= movie.image %>" alt="<%= movie.name %>" loading="lazy">
+                    </div>
+                    <h4 class="pt-1"><%= movie.name %></h4>
+                </a>
+            <% }) %>
+        <% } else { %>
+            <p>No Marvel movies found.</p>
+        <% } %>
+    </div>
+<% } else if (category === 'topMovies') { %>
+    <h1>All Top Rated Movies</h1>
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+        <% if(allMovies.topMovies.length > 0) { %>
+            <% allMovies.topMovies.forEach(function(movie) { %>
+                <a href="/movies/<%= movie._id %>" target="_blank" class="col text-center category__link">
+                    <div class="category__img shadow">
+                        <img src="./img/topRatedMovies/<%= movie.image %>" alt="<%= movie.name %>" loading="lazy">
+                    </div>
+                    <h4 class="pt-1"><%= movie.name %></h4>
+                </a>
+            <% }) %>
+        <% } else { %>
+            <p>No Marvel TopRated found.</p>
+        <% } %>
+    </div>
+<% }else if (category === 'telugu') { %>
+    <h1>All Telugu Movies</h1>
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+        <% if(allMovies.telugu.length > 0) { %>
+            <% allMovies.telugu.forEach(function(movie) { %>
+                <a href="/movies/<%= movie._id %>" target="_blank" class="col text-center category__link">
+                    <div class="category__img shadow">
+                        <img src="./img/telugu/<%= movie.image %>" alt="<%= movie.name %>" loading="lazy">
+                    </div>
+                    <h4 class="pt-1"><%= movie.name %></h4>
+                </a>
+            <% }) %>
+        <% } else { %>
+            <p>No telugu found.</p>
+        <% } %>
+    </div>
+<% }else { %>
+    <p>Invalid action parameter. Please use 'action' or 'marvel' or 'telugu' or 'topRatedMovies'.</p>
+<% } %>
